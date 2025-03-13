@@ -1,0 +1,30 @@
+{
+    "output_file": "results.csv",
+    "evaluations": [
+        {
+            "name": "CreateBySchema",
+            "class": "CreateBySchema",
+            "module": "src.evaluations.create_by_schema.create_by_schema",
+            "datasets": ["schemas_short"]
+        }
+    ],
+    "llm_provider": {
+                "module": "src.llm.openai_provider",
+                "class": "OpenAIProvider",
+                "params": {
+                    "api_key": "YOUR API KEY HERE",
+                    "model": "gpt-4o-mini"
+                }
+            },
+    "observability_provider": 
+        {
+            "name": "langfuse",
+            "module": "src.observability.langfuse.langfuse_observability",
+            "class": "LangfuseObservability",
+            "params": {
+                "secret_key": "YOUR SECRET KEY HERE",
+                "public_key": "YOUR PUBLIC KEY HERE",
+                "host": "LANGFUSE HOST URL HERE"    
+            }
+        }
+}
