@@ -7,8 +7,15 @@ class LangfuseObservability(ObservabilityProvider):
     """Langfuse observability provider for logging LLM calls."""
 
     def __init__(
-        self, public_key: str, secret_key: str, host: str, tags=[], metadata={}
+        self,
+        public_key: str,
+        secret_key: str,
+        host: str,
+        tags=[],
+        metadata={},
+        **kwargs,
     ):
+        super().__init__(**kwargs)
         self.install_dependency("langfuse")
         from langfuse import Langfuse
 

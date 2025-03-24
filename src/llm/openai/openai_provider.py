@@ -4,7 +4,7 @@ from src.llm.llm_provider import LLMProvider
 
 class OpenAIProvider(LLMProvider):
     def __init__(self, api_key, model="gpt-4", **kwargs):
-        super().__init__(**kwargs)  # must call t
+        super().__init__(**kwargs)  # must call it
         self.install_dependency("openai")  # Ensure the package is installed
         import openai
 
