@@ -62,33 +62,21 @@ All the concepts of this configuration such as `Datasets`, `LLM Provider` etc wi
     "output_file": "results.csv",
     "evaluations": [
         {
-            # a user friendly name for the evaluation
             "name": "Create valid JSON according to a given schema",
-            # the path to the file containing the evaluation class being loaded
             "module": "src.evaluations.create_by_schema",
-            # the name of the evaluation class
             "class": "CreateBySchemaEvaluation",
-            # a list of data sets containing the data for the evaluation
             "datasets": ["data/schemas"],
-            # which LLM provider to use, including the params for the model and its configuration if needed
             "llm_provider": {
-                # the path to the file containing the llm provider class being loaded
                 "module": "src.llm.openai_provider",
-                # the name of the llm provider class
                 "class": "OpenAIProvider",
-                # any parameters the provider requires or allows. this is provider specific
                 "params": {
                     "api_key": "your-api-key",
                     "model": "gpt-4"
                 }
             },
-            # which observability to use. this is optional, you can run without observability"
-            observability_provider": {
-                # the path to the file containing the observability provider class being loaded
+            "observability_provider": {
                 "module": "src.observability.langfuse_observability",
-                # the name of the observability provider class
                 "class": "LangfuseObservability",
-                # any parameters the provider requires or allows. this is provider specific
                 "params": {
                     "api_key": "your-langfuse-api-key",
                     "environment": "production"
@@ -101,20 +89,20 @@ All the concepts of this configuration such as `Datasets`, `LLM Provider` etc wi
 
 ### Configuration Fields
 
-- ``: Path to the CSV file where evaluation results will be saved.
-- ``: List of evaluations to run.
-  - ``: A name for the evaluation.
-  - ``: The module where the evaluation class is implemented.
-  - ``: The class name of the evaluation.
-  - ``: List of dataset paths to use for the evaluation.
-  - ``: Defines the LLM provider to use.
-    - ``: The module where the LLM provider class is implemented.
-    - ``: The class name of the LLM provider.
-    - ``: Any necessary parameters (e.g., API keys, model names, etc.).
-  - ``: Defines the observability provider (optional).
-    - ``: The module where the observability provider class is implemented.
-    - ``: The class name of the observability provider.
-    - ``: Any necessary parameters.
+- `output_file`: Path to the CSV file where evaluation results will be saved.
+- `evaluations`: List of evaluations to run.
+  - `name`: A user friendly name for the evaluation.
+  - `module`: The module (folder path) where the evaluation class is implemented.
+  - `class`: The class name of the evaluation.
+  - `datasets`: List of dataset paths to use for the evaluation.
+  - `llm_provider`: Defines the LLM provider to use.
+    - `module`: The module where the LLM provider class is implemented.
+    - `class`: The class name of the LLM provider.
+    - `params`: Any necessary parameters (e.g., API keys, model names, etc.).
+  - `observability_provider`: Defines the observability provider (optional).
+    - `module`: The module where the observability provider class is implemented.
+    - `class`: The class name of the observability provider.
+    - `params`: Any necessary parameters.
 
 ### Running With a Custom Configuration
 
