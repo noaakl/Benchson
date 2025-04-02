@@ -1,5 +1,4 @@
 import os
-import httpx
 from typing import Dict, Any
 from observability.observability_provider import ObservabilityProvider
 from evaluations.evaluation_result import EvaluationResult
@@ -20,7 +19,9 @@ class LangfuseObservability(ObservabilityProvider):
     ):
         super().__init__(**kwargs)
         self.install_dependency("langfuse")
+        self.install_dependency("httpx")
         from langfuse import Langfuse
+        import httpx
 
         httpx_client = httpx.Client(verify=os.getcwd() + os.sep + httpx_client_file_path)
         self.langfuse = Langfuse(
