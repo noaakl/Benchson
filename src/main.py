@@ -3,7 +3,6 @@ import json
 import argparse
 import csv
 from benchson_datasets.dataset import Dataset
-from evaluations.evaluation import Evaluation
 from llm.llm_provider import LLMProvider
 from observability.observability_provider import ObservabilityProvider
 import sys
@@ -64,7 +63,8 @@ def run_evaluations(config):
         eval_instance = evaluation_class(
             eval_name, datasets, llm_provider, observability_provider
         )
-        results.extend(eval_instance.execute_evaluation())
+        eval_result = eval_instance.execute_evaluation()
+        results.extend(eval_result)
 
     save_results(results, output_path)
 
