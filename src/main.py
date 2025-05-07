@@ -7,6 +7,8 @@ from llm.llm_provider import LLMProvider
 from observability.observability_provider import ObservabilityProvider
 import sys
 import os
+from pathlib import Path
+
 
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -29,7 +31,6 @@ def save_results(results, output_path):
 
 def run_evaluations(config):
     """Runs evaluations based on the provided configuration."""
-    output_path = config.get("output_file", "results.csv")
     results = []
 
     observability_provider = None
@@ -65,6 +66,14 @@ def run_evaluations(config):
         )
         eval_result = eval_instance.execute_evaluation()
         results.extend(eval_result)
+
+    # compute and append total score
+    total_score = sum(score for (_, _, score) in results)
+    instances_num = len(results)
+
+    orig = Path(config.get("output_file", "results.csv"))
+    new_name = f"{orig.stem}-{total_score}-{instances_num}{orig.suffix}"
+    output_path = str(orig.with_name(new_name))
 
     save_results(results, output_path)
 
