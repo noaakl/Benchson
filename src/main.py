@@ -97,7 +97,9 @@ def main():
         return
 
     config = load_config(args.config)
-    config["output_file"] = args.output  # Override output file if provided via CLI
+    # Only override if config did not specify an output_file
+    if config.get("output_file") is None:
+        config["output_file"] = args.output
 
     run_evaluations(config)
 
