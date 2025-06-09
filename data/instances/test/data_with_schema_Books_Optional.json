@@ -1,0 +1,156 @@
+{
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "author": {
+        "type": "string",
+        "minLength": 1
+      },
+      "genre": {
+        "type": "string",
+        "enum": [
+          "Fiction",
+          "Non-Fiction",
+          "Mystery",
+          "Science Fiction",
+          "Fantasy",
+          "Biography",
+          "History",
+          "Self-Help"
+        ]
+      },
+      "publicationYear": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "pageCount": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "rating": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+      },
+      "isAvailable": {
+        "type": "boolean"
+      },
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      },
+      "reviews": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reviewer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rating": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "comment": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "reviewer",
+            "rating"
+          ]
+        }
+      },
+      "publisher": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "instances": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Fiction",
+      "publicationYear": 1925,
+      "pageCount": 180,
+      "rating": 4.5,
+      "isAvailable": true,
+      "keywords": [
+        "Classic",
+        "American Literature"
+      ],
+      "reviews": [
+        {
+          "reviewer": "John Doe",
+          "rating": 5,
+          "comment": "A timeless classic."
+        }
+      ],
+      "publisher": {
+        "name": "Scribner"
+      }
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Science Fiction",
+      "publicationYear": 1949,
+      "pageCount": 328,
+      "rating": 4.8,
+      "isAvailable": false,
+      "keywords": [
+        "Dystopian",
+        "Political"
+      ],
+      "reviews": [
+        {
+          "reviewer": "Jane Smith",
+          "rating": 4.5,
+          "comment": "A chilling vision of the future."
+        }
+      ],
+      "publisher": {
+        "name": "Secker & Warburg"
+      }
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Fiction",
+      "publicationYear": 1960,
+      "pageCount": 281,
+      "rating": 4.7,
+      "isAvailable": true,
+      "keywords": [
+        "Classic",
+        "Southern Gothic"
+      ],
+      "reviews": [
+        {
+          "reviewer": "Alice Johnson",
+          "rating": 5,
+          "comment": "A powerful story of morality and justice."
+        }
+      ],
+      "publisher": {}
+    }
+  ]
+}

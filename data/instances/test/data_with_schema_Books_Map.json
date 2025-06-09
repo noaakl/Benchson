@@ -1,0 +1,158 @@
+{
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "author": {
+        "type": "string",
+        "minLength": 1
+      },
+      "genre": {
+        "type": "string",
+        "enum": [
+          "Fiction",
+          "Non-Fiction",
+          "Mystery",
+          "Science Fiction",
+          "Fantasy",
+          "Biography",
+          "History",
+          "Self-Help"
+        ]
+      },
+      "publicationYear": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "pageCount": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "rating": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+      },
+      "isAvailable": {
+        "type": "boolean"
+      },
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "maxItems": 10
+      },
+      "reviews": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "reviewer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rating": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "comment": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "reviewer",
+            "rating",
+            "comment"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1
+      },
+      "publisher": {
+        "type": "object",
+        "properties": {
+          "name": {}
+        }
+      }
+    }
+  },
+  "instances": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Fiction",
+      "publicationYear": 1925,
+      "pageCount": 180,
+      "rating": 4.5,
+      "isAvailable": true,
+      "keywords": [
+        "Classic",
+        "American Literature"
+      ],
+      "reviews": [
+        {
+          "reviewer": "John Doe",
+          "rating": 5,
+          "comment": "A timeless classic."
+        }
+      ],
+      "publisher": {
+        "name": "Scribner"
+      }
+    },
+    {
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "genre": "History",
+      "publicationYear": 2011,
+      "pageCount": 443,
+      "rating": 4.8,
+      "isAvailable": false,
+      "keywords": [
+        "History",
+        "Anthropology"
+      ],
+      "reviews": [
+        {
+          "reviewer": "Jane Smith",
+          "rating": 4.5,
+          "comment": "Insightful and thought-provoking."
+        }
+      ],
+      "publisher": {
+        "name": "Harper"
+      }
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "publicationYear": 1937,
+      "pageCount": 310,
+      "rating": 4.7,
+      "isAvailable": true,
+      "keywords": [
+        "Fantasy",
+        "Adventure"
+      ],
+      "reviews": [
+        {
+          "reviewer": "Alice Johnson",
+          "rating": 5,
+          "comment": "A wonderful adventure."
+        }
+      ],
+      "publisher": {
+        "name": ""
+      }
+    }
+  ]
+}

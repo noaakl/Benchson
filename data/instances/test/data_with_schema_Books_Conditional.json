@@ -1,0 +1,147 @@
+{
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "author": {
+        "type": "string",
+        "minLength": 1
+      },
+      "genre": {
+        "type": "string",
+        "enum": [
+          "Fiction",
+          "Non-Fiction",
+          "Mystery",
+          "Science Fiction",
+          "Fantasy",
+          "Biography",
+          "History",
+          "Self-Help"
+        ]
+      },
+      "publicationYear": {
+        "type": "integer",
+        "minimum": 1000,
+        "maximum": 2023
+      },
+      "price": {
+        "type": "number",
+        "minimum": 0
+      },
+      "inStock": {
+        "type": "boolean"
+      },
+      "reviews": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "reviewer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rating": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "comment": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "reviewer",
+            "rating"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 100
+      },
+      "dimensions": {
+        "type": "object",
+        "properties": {
+          "height": {
+            "type": "number",
+            "minimum": 0
+          },
+          "width": {
+            "type": "number",
+            "minimum": 0
+          },
+          "depth": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  },
+  "instances": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Fiction",
+      "publicationYear": 1925,
+      "price": 10.99,
+      "inStock": true,
+      "reviews": [
+        {
+          "reviewer": "John Doe",
+          "rating": 5,
+          "comment": "A timeless classic!"
+        }
+      ],
+      "dimensions": {
+        "height": 20.3,
+        "width": 12.7,
+        "depth": 2.5
+      }
+    },
+    {
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "genre": "History",
+      "publicationYear": 2011,
+      "price": 15.99,
+      "inStock": true,
+      "reviews": [
+        {
+          "reviewer": "Jane Smith",
+          "rating": 4,
+          "comment": "Insightful and engaging."
+        }
+      ],
+      "dimensions": {
+        "height": 23.5,
+        "width": 15.3,
+        "depth": 3.0
+      }
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "publicationYear": 1937,
+      "price": 8.99,
+      "inStock": true,
+      "reviews": [
+        {
+          "reviewer": "Alice Johnson",
+          "rating": 5,
+          "comment": "A wonderful adventure!"
+        }
+      ],
+      "dimensions": {
+        "height": 17.8,
+        "width": 11.1,
+        "depth": 1.8
+      }
+    }
+  ]
+}
