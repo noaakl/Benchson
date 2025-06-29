@@ -43,36 +43,36 @@ class ModifyJson(Evaluation):
         Compares the LLM's output to the expected ground truth JSON.
         Prints details for debugging during evaluation.
         """
-        print("\n🔍 Running metric_function")
-        print("🔸 Raw LLM result:\n", llm_result)
+        print("\nRunning metric_function")
+        print("Raw LLM result:\n", llm_result)
 
         cleaned_json = llm_result.strip()
         if cleaned_json.startswith("```json"):
             cleaned_json = cleaned_json[len("```json"):].strip()
         if cleaned_json.endswith("```"):
             cleaned_json = cleaned_json[:-3].strip()
-        print("🔹 Cleaned JSON string:\n", cleaned_json)
+        print("Cleaned JSON string:\n", cleaned_json)
 
         try:
             llm_output = json.loads(cleaned_json)
             ground_truth = test_case.get('ground_truth')
 
-            print("✅ Parsed LLM output:", llm_output)
-            print("🎯 Ground truth:", ground_truth)
+            print("Parsed LLM output:", llm_output)
+            print("Ground truth:", ground_truth)
 
             if ground_truth is None:
-                print("⚠️ No ground truth provided — assuming valid.")
+                print("No ground truth provided — assuming valid.")
                 return EvaluationResult(score=1, explanation="No ground truth provided. Output is assumed valid.")
 
             if llm_output == ground_truth:
-                print("✅ Match: JSON was modified correctly.")
+                print("Match: JSON was modified correctly.")
                 return EvaluationResult(score=1, explanation="The JSON was modified correctly.")
             else:
-                print("❌ Mismatch: JSON modification was incorrect.")
+                print("Mismatch: JSON modification was incorrect.")
                 return EvaluationResult(score=0, explanation="The JSON modification was incorrect.")
 
         except json.JSONDecodeError as e:
-            print("❌ JSON decode error:", e)
+            print("JSON decode error:", e)
             return EvaluationResult(score=0, explanation=f"Invalid JSON format: {e}")
 
 

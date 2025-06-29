@@ -73,20 +73,9 @@ def run_evaluations(config):
 
     orig = Path(config.get("output_file", "results.csv"))
     new_name = f"{orig.stem}-{total_score}-{instances_num}{orig.suffix}"
-
-    category = config.get("output_category")
-    if not category:
-        if any("Strict" in e.get("class", "") for e in config.get("evaluations", [])):
-            category = "strict"
-        else:
-            category = "dynamic"
-    output_dir = os.path.join("outputs", category)
-    os.makedirs(output_dir, exist_ok=True)
-
-    output_path = os.path.join(output_dir, new_name)
+    output_path = str(orig.with_name(new_name))
 
     save_results(results, output_path)
-
 
 
 def main():
