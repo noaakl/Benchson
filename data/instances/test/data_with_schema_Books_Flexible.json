@@ -1,0 +1,157 @@
+{
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Books",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "author": {
+        "type": "string",
+        "minLength": 1
+      },
+      "genre": {
+        "type": "string",
+        "enum": [
+          "Fiction",
+          "Non-Fiction",
+          "Mystery",
+          "Science Fiction",
+          "Fantasy",
+          "Biography",
+          "History",
+          "Self-Help"
+        ]
+      },
+      "publicationYear": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "price": {
+        "type": "number",
+        "minimum": 0
+      },
+      "isAvailable": {
+        "type": "boolean"
+      },
+      "ratings": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "minItems": 1,
+        "maxItems": 10
+      },
+      "reviews": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "reviewer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "comment": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rating": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          "required": [
+            "reviewer",
+            "comment",
+            "rating"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 10
+      },
+      "publisher": {
+        "type": "object",
+        "properties": {
+          "name": {}
+        }
+      }
+    }
+  },
+  "instances": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Fiction",
+      "publicationYear": 1925,
+      "price": 10.99,
+      "isAvailable": true,
+      "ratings": [
+        4.5,
+        4.0,
+        4.8
+      ],
+      "reviews": [
+        {
+          "reviewer": "John Doe",
+          "comment": "A classic novel.",
+          "rating": 4.5
+        }
+      ],
+      "publisher": {
+        "name": "Scribner"
+      }
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Science Fiction",
+      "publicationYear": 1949,
+      "price": 8.99,
+      "isAvailable": false,
+      "ratings": [
+        4.7,
+        4.2
+      ],
+      "reviews": [
+        {
+          "reviewer": "Jane Smith",
+          "comment": "A chilling dystopian tale.",
+          "rating": 4.7
+        }
+      ],
+      "publisher": {
+        "name": "Secker & Warburg"
+      }
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Fiction",
+      "publicationYear": 1960,
+      "price": 7.99,
+      "isAvailable": true,
+      "ratings": [
+        4.8,
+        4.6,
+        4.9
+      ],
+      "reviews": [
+        {
+          "reviewer": "Alice Johnson",
+          "comment": "A timeless classic.",
+          "rating": 4.8
+        }
+      ],
+      "publisher": {
+        "name": "J.B. Lippincott & Co."
+      }
+    },
+    {}
+  ]
+}

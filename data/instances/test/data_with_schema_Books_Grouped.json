@@ -1,0 +1,140 @@
+{
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "author": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName"
+        ],
+        "additionalProperties": false
+      },
+      "publisher": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "publicationYear": {
+        "type": "integer",
+        "minimum": 1000,
+        "maximum": 2100
+      },
+      "ISBN": {
+        "type": "string",
+        "pattern": "^[0-9]{13}$"
+      },
+      "genre": {
+        "type": "string",
+        "enum": [
+          "Fiction",
+          "Non-fiction",
+          "Mystery",
+          "Science Fiction",
+          "Fantasy",
+          "Biography",
+          "Self-help"
+        ]
+      },
+      "price": {
+        "type": "number",
+        "minimum": 0
+      },
+      "inStock": {
+        "type": "boolean"
+      },
+      "reviews": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    }
+  },
+  "instances": [
+    {
+      "title": "The Great Gatsby",
+      "author": {
+        "firstName": "F. Scott",
+        "lastName": "Fitzgerald",
+        "birthDate": "1896-09-24"
+      },
+      "publisher": {
+        "name": "Scribner",
+        "location": "New York"
+      },
+      "publicationYear": 1925,
+      "ISBN": "9780743273565",
+      "genre": "Fiction",
+      "price": 10.99,
+      "inStock": true,
+      "reviews": []
+    },
+    {
+      "title": "1984",
+      "author": {
+        "firstName": "George",
+        "lastName": "Orwell",
+        "birthDate": "1903-06-25"
+      },
+      "publisher": {
+        "name": "Secker & Warburg",
+        "location": "London"
+      },
+      "publicationYear": 1949,
+      "ISBN": "9780451524935",
+      "genre": "Science Fiction",
+      "price": 8.99,
+      "inStock": true,
+      "reviews": []
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": {
+        "firstName": "Harper",
+        "lastName": "Lee",
+        "birthDate": "1926-04-28"
+      },
+      "publisher": {
+        "name": "J.B. Lippincott & Co.",
+        "location": "Philadelphia"
+      },
+      "publicationYear": 1960,
+      "ISBN": "9780061120084",
+      "genre": "Fiction",
+      "price": 7.99
+    }
+  ]
+}

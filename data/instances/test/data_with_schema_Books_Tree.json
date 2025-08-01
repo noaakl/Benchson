@@ -1,0 +1,155 @@
+{
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Books",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "author": {
+        "type": "string",
+        "minLength": 1
+      },
+      "genre": {
+        "type": "string",
+        "enum": [
+          "Fiction",
+          "Non-Fiction",
+          "Mystery",
+          "Science Fiction",
+          "Fantasy",
+          "Biography",
+          "History",
+          "Self-Help"
+        ]
+      },
+      "publicationYear": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "price": {
+        "type": "number",
+        "minimum": 0
+      },
+      "inStock": {
+        "type": "boolean"
+      },
+      "reviews": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "reviewer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rating": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "comment": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "reviewer",
+            "rating"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1
+      },
+      "chapters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "chapterNumber": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "chapterTitle": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pages": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "instances": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Fiction",
+      "publicationYear": 1925,
+      "price": 10.99,
+      "inStock": true,
+      "reviews": [
+        {
+          "reviewer": "John Doe",
+          "rating": 5,
+          "comment": "A timeless classic!"
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterTitle": "Introduction",
+          "pages": 20
+        }
+      ]
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Science Fiction",
+      "publicationYear": 1949,
+      "price": 8.99,
+      "inStock": true,
+      "reviews": [
+        {
+          "reviewer": "Jane Smith",
+          "rating": 4,
+          "comment": "A chilling dystopian novel."
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterTitle": "The Beginning",
+          "pages": 15
+        }
+      ]
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Fiction",
+      "publicationYear": 1960,
+      "price": 7.99,
+      "inStock": true,
+      "reviews": [
+        {
+          "reviewer": "Alice Johnson",
+          "rating": 5,
+          "comment": "A powerful story about justice and compassion."
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterTitle": "The Start",
+          "pages": 18
+        }
+      ]
+    }
+  ]
+}
